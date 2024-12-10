@@ -26,10 +26,6 @@ class GroupAnagrams {
   private String getStrAscii(String str) {
     char[] chars = str.toCharArray();
     Arrays.sort(chars);
-    StringBuilder ascii = new StringBuilder();
-    for (char ch : chars) {
-      ascii.append((int) ch);
-    }
-    return ascii.toString();
+    return new String(chars);
   }
 }
