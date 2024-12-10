@@ -3,14 +3,17 @@ class ValidPalindrome {
     if (s.isEmpty() || s.isBlank()) {
       return true;
     }
-
     s = s.toLowerCase().replaceAll(" ", "").replaceAll("[^A-Za-z0-9]", "");
 
-    StringBuilder t = new StringBuilder();
-    for (int i = s.length() - 1; i >= 0; i--) {
-      t.append(s.charAt(i));
+    int left = 0, right = s.length() - 1;
+    while (left < right) {
+      if (s.charAt(left) != s.charAt(right)) {
+        return false;
+      }
+      left++;
+      right--;
     }
 
-    return s.equals(t.toString());
+    return true;
   }
 }
