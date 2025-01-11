@@ -9,3 +9,4 @@
 - [125. Valid Palindrome](./125-valid-palindrome.java) - [Leetcode](https://leetcode.com/problems/valid-palindrome/)
 - [217. Contains Duplicate](./217-contains-duplicate.java) - [Leetcode](https://leetcode.com/problems/contains-duplicate/)
 - [242. Valid Anagram](./242-valid-anagram.java) - [Leetcode](https://leetcode.com/problems/valid-anagram/)
+- [1204. Last Person to Fit in the Bus](./1204-last-person-to-fit-in-the-bus.sql) - [Leetcode](https://leetcode.com/problems/last-person-to-fit-in-the-bus/)
