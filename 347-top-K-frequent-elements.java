@@ -8,32 +8,27 @@ class TopKFrequentElements {
   // k: 2
   // output: [1,2]
   public int[] topKFrequent(int[] nums, int k) {
-    HashMap<Integer, Integer> num2freq = new HashMap<>();
+    Map<Integer, Integer> frequencyMap = new HashMap<>();
     for (int num : nums) {
-      num2freq.put(num, num2freq.getOrDefault(num, 0) + 1);
+      frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
     }
 
-    List<Integer>[] freqBuckets = new List[nums.length + 1];
-    for (int i = 0; i < freqBuckets.length; i++) {
-      freqBuckets[i] = new ArrayList<>();
+    List<Integer>[] bucket = new List[nums.length + 1];
+    for (int key : frequencyMap.keySet()) {
+      int frequency = frequencyMap.get(key);
+      if (bucket[frequency] == null) {
+        bucket[frequency] = new ArrayList<>();
+      }
+      bucket[frequency].add(key);
     }
 
-    for (Map.Entry<Integer, Integer> entry : num2freq.entrySet()) {
-      freqBuckets[entry.getValue()].add(entry.getKey());
-    }
-
-    int[] result = new int[k];
-    int count = 0;
-
-    for (int i = freqBuckets.length - 1; i >= 0 && count < k; i--) {
-      for (int num : freqBuckets[i]) {
-        result[count++] = num;
-        if (count == k) {
-          break;
-        }
+    List<Integer> topK = new ArrayList<>();
+    for (int i = bucket.length - 1; i >= 0 && topK.size() < k; i--) {
+      if (bucket[i] != null) {
+        topK.addAll(bucket[i]);
       }
     }
 
-    return result;
+    return topK.stream().mapToInt(i -> i).toArray();
   }
 }
